@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+#parent {
+    background-color: yellow;
+    width: 100px;
+    height: 30px;
+    margin:0px auto
+}
+
+#parent select {
+    background: transparent;
+    border: none;
+    padding-left: 10px;
+    width: 120px;
+    height: 100%;
+}
+#all{  
+    margin:0px auto;  
+    width:500px; /* 必须制定宽度 */  
+    height:200px;  
+    background-color:#ffffff; 
+ }

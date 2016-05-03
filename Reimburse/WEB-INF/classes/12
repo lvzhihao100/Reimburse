@@ -1,0 +1,33 @@
+
+CREATE DATABASE IF NOT EXISTS Reimburse default character set utf8 COLLATE utf8_general_ci;
+use Reimburse;
+
+create table user(
+accout varchar(20) primary key,
+password varchar(20) not null,
+nickname varchar(20)
+);
+
+create table paper(
+paperId int primary key auto_increment,
+timeStart timestamp,
+timeEnd timestamp,
+result varchar(20),
+accout varchar(20),
+CONSTRAINT accout_fk FOREIGN KEY(accout) REFERENCES user(accout)
+);
+
+create table medicine(
+name varchar(50) not null,
+price int not null,
+paperId int,
+CONSTRAINT paperId_fk FOREIGN KEY(paperId) REFERENCES paper(paperId)
+);
+
+insert into user values('123','123',null);
+
+insert into paper values('2007-10-08 11:53:35','2007-10-08 11:53:35','no','123');
+
+insert into medicine values('阿莫西林','20',null);
+
+alert database Reimburse character set utf8;

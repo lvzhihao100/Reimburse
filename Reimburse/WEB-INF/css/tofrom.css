@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+#parent {
+    background: url('yourimage') no-repeat;
+    width: 100px;
+    height: 30px;
+    margin:0px auto
+}
+
+#parent select {
+    background: transparent;
+    border: none;
+    padding-left: 10px;
+    width: 120px;
+    height: 100%;
+}
