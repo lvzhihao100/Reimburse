@@ -6,6 +6,10 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
+<%
+	String amind = "Admin";
+	request.setAttribute("amind", amind);
+%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -23,44 +27,73 @@
 	-->
 		<link rel="stylesheet" href="tofrom.css" type="text/css">
 		<script type="text/javascript">
+		function toSubmitForm(){
+		window.location.href='PaperServlet?action=submit';
+		}
+	
 </script>
 	</head>
 
 	<body>
 		<center>
-		<table>
-		<tr>
-		<td>药品</td><td>单价</td><td>数量</td>
-		</tr>
-		<c:forEach items="${paper.medicine}" var="list"></c:forEach>
-		<tr>
-		<td>
-		<c:out value="list.name"></c:out>
-		</td>
-		<td>
-		<c:out value="list.price"></c:out>
-		</td>
-		<td>
-		<c:out value="list.number"></c:out>
-		</td>
-		</tr>
-		</table>
-			<form action="${pageContext.request.contextPath }/RegisterServlet"
-				method="post" onsubmit="return validate_form(this)">
+		<c:if test="${paper.title!=null}">
+		<h2>
+		<c:out value="${paper.title}"></c:out>
+		</h2>
+		</c:if>
+			<table>
+				<tr>
+					<td>
+						药品
+					</td>
+					<td>
+						单价
+					</td>
+					<td>
+						数量
+					</td>
+				</tr>
+				<c:if test="${not empty paper.medicines}">
+					<c:forEach items="${paper.medicines}" var="list">
+						<tr>
+							<td>
+								<c:out value="${list.name}"></c:out>
+							</td>
+							<td>
+								<c:out value="${list.price}"></c:out>
+							</td>
+							<td>
+								<c:out value="${list.number}"></c:out>
+							</td>
+						</tr>
+					</c:forEach>
+				</c:if>
+
+			</table>
+			<form action="${pageContext.request.contextPath }/PaperServlet"
+				method="post">
 				<div id="parent">
 					<select name="name">
 						<c:forEach items="${medicines}" var="list">
 							<option>
-								<c:out value="list.name"></c:out>
+								<c:out value="${list.name}"></c:out>
 							</option>
 						</c:forEach>
 					</select>
-					
-					
+
+
 				</div>
-				数量<input type="text" name="number"/><br>
+				<c:if test="${paper.title==null}">
+				标题
+				<input type="text" name="title" />
+				<br>
+				</c:if>
+				数量
+				<input type="text" name="number" />
+				<br>
 				<input type="submit" name="submit" value="添 加">
 			</form>
+			<button onclick="toSubmitForm()">提交</button>
 		</center>
 	</body>
 </html>

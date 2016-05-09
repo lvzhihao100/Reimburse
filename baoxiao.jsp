@@ -22,12 +22,16 @@
 	-->
 	<script type="text/javascript">
 	function toAddForm(){
-	window.location.href='addForm.jsp';
+	window.location.href='MedicineServlet?action=medicinetype';
+	}
+	function toGetForm(){
+	window.location.href='PaperServlet?action=allpaper';
 	}
 	</script>
 	</head>
 
 	<body>
-		<button onclick="toAddForm()">添加报销单</button>
+		<button onclick="toAddForm()">添加报销单</button><br>
+		<button onclick="toGetForm()">所有报销单</button>
 	</body>
 </html>

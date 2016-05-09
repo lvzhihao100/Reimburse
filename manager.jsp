@@ -1,5 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -21,44 +20,34 @@
 		<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-		<link rel="stylesheet" href="tofrom.css" type="text/css">
+		<script type="text/javascript">
+	function toAddMedicine() {
+		window.location.href = 'MedicineServlet?action=medicinetypeadd';
+	}
+	function toUserManager() {
+		window.location.href = 'UserServlet?action=manager';
+	}
+</script>
 	</head>
 
 	<body>
-		<center>
-			<table border=1>
-				<tr>
-					<td>
-						用户名
-					</td>
-					<td>
-						密码
-					</td>
-					<td>
-						操作
-					</td>
-					<td>
-						操作
-					</td>
-				</tr>
-				<c:forEach items="${users}" var="list">
-					<tr>
-						<td>
-							<c:out value="${list.accout}" />
-						</td>
-						<td>
-							<c:out value="${list.password}" />
-						</td>
-						<td>
-							<button name="delete" value="delete">删除</button>
-						</td>
-						<td>
-							
-						</td>
-					</tr>
-					<a>查看详情</a>
-				</c:forEach>
-			</table>
+	<center>
+		<table border=1>
+			<tr>
+				<td>
+					<button onclick="toAddMedicine()">
+						添加药品
+					</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button onclick="toUserManager()">
+						用户管理
+					</button>
+				</td>
+			</tr>
+		</table>
 		</center>
 	</body>
 </html>
